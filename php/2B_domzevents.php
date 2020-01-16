@@ -1,5 +1,7 @@
 <?
 /*
+Idée generer un deviceun Contenu HTMML pour afficher la fentre de configuration
+
 Avoir la liste des events
 http://10.66.254.101:8080/json.htm?param=list&type=events
 
