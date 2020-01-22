@@ -85,12 +85,15 @@ return {
     local _u = dz.utils
    
     functions = {
-      ['0ou1'] = function()  if (item.active)  then return 1  end return 0 end,
-      ['0ou100'] = function()  if (item.active)  then return 100  end return 0 end,
       ['temp'] = function() return _u.round(item.temperature, 2) end,
       ['hum'] = function() return _u.round(item.humidity, 0)  end,
       ['pres'] = function() return _u.round(item.pressure, 0)  end,
       ['lux'] = function() return _u.round(item.lux, 0)  end,
+      ['bat'] = function() return _u.round(item.batteryLevel, 0)  end,
+      ['siglvl'] = function() return _u.round(item.signalLevel, 0)  end,
+      ['com'] = function()  if (item.timedOut)  then return 1  end return 0 end,
+      ['0ou1'] = function()  if (item.active)  then return 1  end return 0 end,
+      ['0ou100'] = function()  if (item.active)  then return 100  end return 0 end,
       ['nvalue'] = function() return _u.round(item.nvalue, 0)  end,
       ['dzbri'] = function()  val=0  if item.active then val =  math.floor(item.level / 10 + 0.5) * 10  
                               if val == 0 then val = 1 end  end return val end,
@@ -202,14 +205,17 @@ if (!$savedone)
     
     // type d'echange géré
     $selechange = '{';
-    $selechange = $selechange .'"0ou1":"0 ou 1 - Off/On, Ferm./Ouv. Ras/Mouv. ...",';
-    $selechange = $selechange .'"0ou100":"0 ou 100 - Off/On, Ferm./Ouv. Ras/Mouv. ...)",';
     $selechange = $selechange .'"temp":"Température",';
     $selechange = $selechange .'"hum":"Humidité",';
     $selechange = $selechange .'"pres":"Pression",';
     $selechange = $selechange .'"lux":"Luminosité",';
+    $selechange = $selechange .'"bat":"Niveau de batterie",';
+    $selechange = $selechange .'"siglvl":"Indicateur de signal",';
+    $selechange = $selechange .'"com":"Etat de la communication",';
+    $selechange = $selechange .'"0ou1":"Off/On, Ferm./Ouv. Ras/Mouv. (0 ou 1)",';
+    $selechange = $selechange .'"0ou100":"Off/On, Ferm./Ouv. Ras/Mouv. (0 ou 100)",';    
     $selechange = $selechange .'"nvalue":"Valeur brute : nValue",';
-    $selechange = $selechange .'"dzbri":"On/Off et Luminosité deConz"';
+    $selechange = $selechange .'"dzbri":"deConzAct - On/Off et Luminosité "';
     $selechange = $selechange . '}';
     
     if ($doXML) sdk_echoxml('selechange', $selechange, $doXML);  
