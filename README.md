@@ -1,12 +1,12 @@
 # eedomus-domoticzevent-plugin (Dev en cours)
 
-Plugin eedomus pour configurer l'envoi de donnes de Domoticz vers eedomus
+Plugin eedomus pour configurer l'envoi de données de Domoticz vers eedomus
 
-## fonctionnement
+## Fonctionnement
 
-Ce Plugin injecte dans domoticz un script dzevents 'domzevents_plugin', celui ci ne DOIT pas être modifier manuellement. La mise à jour est effectuée automatiquement par le plugin.
+Ce Plugin injecte dans domoticz un script dzevents 'domzevents_plugin'. Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée automatiquement par le plugin.
 
-## transerts gérée
+## Transferts gérée
 
 * Température 
 * Humidité
@@ -18,6 +18,6 @@ Ce Plugin injecte dans domoticz un script dzevents 'domzevents_plugin', celui ci
 * Off/On, Fermé/Ouvert, Ras/Mouvemement (0/1)
 * Off/On, Fermé/Ouvert, Ras/Mouvemement (0/100)
 * Valeur brute : nValue
-* deConzAct - On/Off et Luminosité
+* deConzAct - On/Off et Luminosité ([Plugin eedomus pour les actionneurs deCONZ](https://github.com/2bprog/eedomus-deconzact-plugin))
 
 
