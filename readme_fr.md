@@ -1,1 +1,0 @@
-eedomus-domoticzevent-plugin
