@@ -91,7 +91,7 @@ return {
       ['lux'] = function() return _u.round(item.lux, 0)  end,
       ['bat'] = function() return _u.round(item.batteryLevel, 0)  end,
       ['siglvl'] = function() return _u.round(item.signalLevel, 0)  end,
-      ['com'] = function()  if (item.timedOut)  then return 1  end return 0 end,
+      ['com'] = function()  if (item.timedOut)  then return 0  end return 1 end,
       ['0ou1'] = function()  if (item.active)  then return 1  end return 0 end,
       ['0ou100'] = function()  if (item.active)  then return 100  end return 0 end,
       ['nvalue'] = function() return _u.round(item.nvalue, 0)  end,
