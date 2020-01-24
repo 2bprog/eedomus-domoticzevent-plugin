@@ -1,32 +1,42 @@
 [EN COURS DE DEVELOPPEMENT / TEST / REDACTION]
 
-Ce plugin permet de configurer l'envoi de données de Domoticz vers eedomus. Pour ce faire, il injecte dans domoticz un script dzevents 'domzevents_plugin'. Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée automatiquement par le plugin.
-Ci-dessous un exemple d'usage pour l'échange dun capteur de température.
+Ce plugin permet de configurer l'envoi de données de Domoticz vers l'Eedomus. 
+Pour ce faire, il injecte dans Domoticz un script dzevents 'domzevents_plugin'. 
+Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée automatiquement.
+
+Voici  un exemple pour envoyer la valeur d'un capteur de température.
 
 ![Exemple pour un capteur de température](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/exemple-temp.jpg)
 
-Vous pouvez combiner l'usage avec les plugins [deconzact](https://github.com/2bprog/eedomus-deconzact-plugin) et [deconzcap](https://github.com/2bprog/eedomus-deconzcap-plugin) 
+Ce plugin peut être utilisé en complément de [deconzact](https://forum.eedomus.com/viewtopic.php?f=50&t=9236) et [deconzcap](https://forum.eedomus.com/viewtopic.php?f=50&t=9238) 
 
 ## Prérequis
 
 * Un serveur Domoticz sur votre réseau local
+* Acces au reseau local de la box Eedomus et de Domoticz
 
 ## Installation
-Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store eedomus" / "TODO" / "Créer"
+Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store eedomus" / "Domoticz - Events" / "Créer"
 
-!! TODO CAPTURE : IMG Plugin
+![Configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfg1.jpg)
 
 ## Champs à configurer : 
 
-!! TODO CAPTURE : IMG Plugin
+![Champs à configurer](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfg2.jpg)
+
+
+### IP + Port, Utilisateur et Mode de passe pour l'acces au serveur domoticz
+
+* IP Local et port (par défaut : 8080) du serveur Domoticz
+
+Dans les cas ou l'acces au serveur Domoticz est sécurisé il vous faut renseigné les champs suivants (sinon vous pouvez les laisser vides):
+
+* Utilisateur (facultatif) 
+* Mot de passe (facultatif)
 
 ### IP de votre eedomus
 
-* TODO 
-
-### IP + Port / Utilisateur et Mode de passe domoticz
-
-* TODO 
+** IP Local de votre Eedomus
 
 ## Widget crée  : 
 
@@ -62,8 +72,7 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 ![domz-script](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domz-script.JPG)
 
 
-
-## Types d'information domoticz gérés
+## Types d'information domoticz gérés et testés
 
 * Température (rfxcom, deCONZ)
 * Humidité (rfxcom, deCONZ)
@@ -71,7 +80,6 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 * Liminosité (deCONZ)
 * Niveau de batterie (rfxcom, deCONZ)
 * Indicateur de signal (rfxcom)
-* Etat de la communication
 * Off/On, Fermé/Ouvert, Ras/Mouvemement (0/1) 
 * Off/On, Fermé/Ouvert, Ras/Mouvemement (0/100)
 * Valeur brute : nValue
