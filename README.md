@@ -1,4 +1,4 @@
-[EN COURS DE REDACTION]
+[EN COURS DE DEVELOPPEMENT / TEST / REDACTION]
 
 Ce plugin permet de configurer l'envoi de données de Domoticz vers eedomus. Pour ce faire, il injecte dans domoticz un script dzevents 'domzevents_plugin'. Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée automatiquement par le plugin.
 Ci-dessous un exemple d'usage pour l'échange dun capteur de température.
@@ -90,6 +90,7 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 
 ## Liens 
 
+* TODO
 
 
 
