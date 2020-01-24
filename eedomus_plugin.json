@@ -6,7 +6,7 @@
 	"creation_date": "2020-01-16",
 	"modification_date": "2020-01-25",
 	"author": "Benjamin B.<br><a target='_blank' href='https://github.com/2bprog/eedomus-domoticzevent-plugin'>Sources sur github <img src='/img/external.png'></a>",
-	"description_fr": "<b>Ce Plugin permet de configurer l'envoi de changement de valeur de Domoticz vers l'Eedomus</b><br><br>Température, Humidité, Pression, Luminosité, <br>Niveau de batterie, Valeur numérique brute : nValue<br>Indicateur de signal,<br>Off/On. Ferm./Ouv. Ras/Mouv. (retourn 0 ou 1), Off/On. Ferm./Ouv. Ras/Mouv. (retourn 0 ou 100), <br><a href='https://forum.eedomus.com/viewtopic.php?f=50&t=9236' target='_blank'>deConzAct</a> - On/Off et Luminosité<br><br>Ce plugin peut etre utilisé en complement de <a href='https://forum.eedomus.com/viewtopic.php?f=50&t=9236' target='_blank'>deConzAct</a> et <a href='https://forum.eedomus.com/viewtopic.php?f=50&t=9238' target='_blank'>deConzCap</a>",
+	"description_fr": "<b>Ce Plugin permet de configurer l'envoi de changement de valeur de Domoticz vers l'Eedomus</b><br><br>Température, Humidité, Pression, Luminosité, <br>Niveau de batterie, Valeur numérique brute : nValue<br>Indicateur de signal,<br>Off/On. Ferm./Ouv. Ras/Mouv. (retour 0 ou 1), Off/On. Ferm./Ouv. Ras/Mouv. (retour 0 ou 100), <br><a href='https://forum.eedomus.com/viewtopic.php?f=50&t=9236' target='_blank'>deConzAct</a> - On/Off et Luminosité<br><br>Ce plugin peut etre utilisé en complement de <a href='https://forum.eedomus.com/viewtopic.php?f=50&t=9236' target='_blank'>deConzAct</a> et <a href='https://forum.eedomus.com/viewtopic.php?f=50&t=9238' target='_blank'>deConzCap</a>",
 	"description_en": "",
 	"description_es": "",
 	"description_it": "",
