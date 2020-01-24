@@ -1,15 +1,4 @@
 <?
-/*
-Idée generer un deviceun Contenu HTMML pour afficher la fentre de configuration
-Avoir la liste des events
-http://10.66.254.101:8080/json.htm?param=list&type=events
-Avoir le detail d'un evenement
-http://10.66.254.101:8080/json.htm?event=1&param=load&type=events
-http://10.66.254.101:8080/json.htm?type=command&param=getgpio
-http://10.66.254.101:8080/json.htm?type=devices&filter=all&used=true&order=Name
-Create New ligne 4501
-https://github.com/domoticz/domoticz/blob/95e2be251f07af94f8068172b0fd4473bbbb8792/main/EventSystem.cpp 
-*/
 
 /*
 domipp=[IP:PORT,[user:pwd]]
@@ -27,12 +16,16 @@ header("Access-Control-Allow-Origin: *");
 $dompram=getArg("domipp", false, "10.66.254.101:8080,:");
 $domipp="10.66.254.101:8080";
 $domup=':';
+
+$dompram = str_replace ( "plugin.parameters.DOMZUSER" , "" , $dompram);
+$dompram = str_replace ( "plugin.parameters.DOMZPWD" , "" , $dompram);
+
 $arDomz = explode(",",$dompram); 
 if (count($arDomz) > 0) $domipp=$arDomz[0];
 if (count($arDomz) > 1) $domup=$arDomz[1];
 $domheader=array('');
 if ($domup != ':') 
-    $domheader = array('Authorization: Basic'.base64_encode($domup) );
+    $domheader = array('Authorization: Basic '.base64_encode($domup) );
 
 
 $eedip = getArg("eedip",false, '10.66.254.240');
@@ -51,11 +44,11 @@ if ($action=='WIDGET' && $doHTML)
 ?>
 <div>
     <center>
-        <spam style="font: 12px tahoma;">Configuration des evenements domoticz vers l'eedomus</spam><br>
-        <button style="font: 12px tahoma; margin-top:10px;" onclick="javascript:window.open('http://<?echo $eedip?>/script/?exec=2B_domzevents.php&p2=html','domzevents','width=1280,height=700,toolbar=no');">Cliquez ici (<?echo $eedip?>)</button>
+        <spam style="font: 12px tahoma;">Configuration des evenements <a href="http://<?echo $domipp?>" target="_blank">domoticz</a> vers l'eedomus</spam><br>
+        <button style="font: 12px tahoma; margin-top:10px;" onclick="javascript:window.open('http://<?echo $eedip?>/script/?exec=2B_domzevents.php&eedip=<?echo $eedip?>&domipp=<?echo $dompram?>&p2=html','domzevents','width=1280,height=700,toolbar=no');">Cliquez ici (<?echo $eedip?>)</button>
     </center>
 </div>
-<?
+<? 
 die();
 }
 
@@ -113,7 +106,7 @@ return {
                     if item.changed then
                         val = fn()
                         dz.log('ID ' .. item.id .. ' send : ' .. tostring(val) .. ' to ' .. tostring(ideed), dz.LOG_INFO) 
-                        urleedomus = 'http://10.66.254.240/script/?exec=2B_domzevents.php&action=SET&api=' .. ideed .. '&val=' .. tostring(val)
+                        urleedomus = 'http://".$eedip."/script/?exec=2B_domzevents.php&action=SET&api=' .. ideed .. '&val=' .. tostring(val)
                         dz.openURL({ url = urleedomus , method = 'GET' })
                     end 
                 else
@@ -138,6 +131,12 @@ $domzip = getArg('domz', false);   // IP:Port,User:pwd
 if ($doXML) sdk_header("text/xml");
 if ($doXML) echo "<domzevents>\r\n";
 
+if ($doXML) sdk_echoxml('dompram', $dompram, $doXML);  
+if ($doXML) sdk_echoxml('domipp', $domipp, $doXML);  
+if ($doXML) sdk_echoxml('domup', $domup, $doXML);  
+if ($doXML) sdk_echoxml('domheader', $domheader[0], $doXML);  
+
+    
 $nbfound = 0;
 $ok = sdk_getIDs($domheader, $domipp, $domzscripts, $nbfound, $doXML);
 if ($ok && $nbfound != count($domzscripts))
@@ -146,7 +145,7 @@ if ($ok && $nbfound != count($domzscripts))
     if ($ok) $ok = sdk_getIDs($domheader, $domipp, $domzscripts, $nbfound, $doXML);
 }
 
-if ($ok && $nbfound == count($domzscripts) && $action != 'POST')
+if ($ok && $nbfound === count($domzscripts) && $action != 'POST')
 {
     $ok = sdk_loadScripts($domheader, $domipp, $domzscripts, $doXML);
 }
@@ -160,7 +159,7 @@ if ($action == 'POST')
     if ($data != '')
     {
         sdk_decodecfg($data, $luahdr, $luacfg, $doXML);
-        $ok = sdk_createOrupdateScripts($domheader, $domipp, $domzscripts, $defscript, $luahdr, $luacfg, $doXML);
+        sdk_createOrupdateScripts($domheader, $domipp, $domzscripts, $defscript, $luahdr, $luacfg, $doXML);
     }
     else
     {
@@ -170,7 +169,7 @@ if ($action == 'POST')
     
 }
 
-if (!$savedone)
+if (!$savedone && $ok)
 {
     // chargement id eedomus
     $ok=sdk_eedomusHttp("http://localhost/api/get?action=periph.list", 'GET', '', $eedomus, $doXML);
@@ -211,16 +210,19 @@ if (!$savedone)
     $selechange = $selechange .'"lux":"Luminosité",';
     $selechange = $selechange .'"bat":"Niveau de batterie",';
     $selechange = $selechange .'"siglvl":"Indicateur de signal",';
-    $selechange = $selechange .'"com":"Etat de la communication",';
+    //$selechange = $selechange .'"com":"Etat de la communication",';
     $selechange = $selechange .'"0ou1":"Off/On, Ferm./Ouv. Ras/Mouv. (0 ou 1)",';
     $selechange = $selechange .'"0ou100":"Off/On, Ferm./Ouv. Ras/Mouv. (0 ou 100)",';    
-    $selechange = $selechange .'"nvalue":"Valeur brute : nValue",';
+    $selechange = $selechange .'"nvalue":"Valeur numérique brute : nValue",';
     $selechange = $selechange .'"dzbri":"deConzAct - On/Off et Luminosité "';
     $selechange = $selechange . '}';
     
     if ($doXML) sdk_echoxml('selechange', $selechange, $doXML);  
 }
 
+if ($ok) $ok = 1;
+else $ok=0;
+if ($doXML) sdk_echoxml('ok', $ok, $doXML); 
 if ($doXML) echo "</domzevents>\r\n";
 if (!$doHTML) die();
 ?>
@@ -253,34 +255,36 @@ if (!$doHTML) die();
 <script src="https://cdn.jsdelivr.net/gh/2bprog/DataTable-AltEditor/src/dataTables.altEditor.free.js" ></script>
 <script>
 
-
+<? if ($ok) { ?>
 $(document).ready(function() {
     
   $.fn.modal.Constructor.prototype.enforceFocus = function() {};
-  
+ 
 <?
-echo 'var seldomzids='.$seldomzids.";\r\n";
-echo 'var seleeids='.$seleeids.";\r\n";
-echo 'var selechange='.$selechange.";\r\n";
-
-echo 'var dataSet = [';
-foreach ($domzscripts as $key => $value)
-{
-    foreach ($domzscripts[$key]['domzids'] as $keydom => $valuedom)
+    echo 'var seldomzids='.$seldomzids.";\r\n";
+    echo 'var seleeids='.$seleeids.";\r\n";
+    echo 'var selechange='.$selechange.";\r\n";
+    
+    echo 'var dataSet = [';
+    foreach ($domzscripts as $key => $value)
     {
-         foreach ($valuedom as $keyidx => $valuear)
+        foreach ($domzscripts[$key]['domzids'] as $keydom => $valuedom)
         {
-            echo '{ domzid:'.$keydom.' ,';
-            foreach ($valuear as $keyeed => $valuetype)
+             foreach ($valuedom as $keyidx => $valuear)
             {
-                echo 'eeid:'.$keyeed.', ech:"'.$valuetype.'"},'."\r\n";
+                echo '{ domzid:'.$keydom.' ,';
+                foreach ($valuear as $keyeed => $valuetype)
+                {
+                    echo 'eeid:'.$keyeed.', ech:"'.$valuetype.'"},'."\r\n";
+                }
             }
         }
     }
-}
-echo ' ];';
+    echo ' ];';
+} 
 ?>
 
+<? if ($ok) { ?>
 
   var columnDefs = [
    {
@@ -389,20 +393,24 @@ $("#send").on("click", function(e) {
 	
      $.ajax({
 	    type: "POST",
-<?
-        $url =  "http://$eedip/script/?exec=2B_domzevents.php&domipp=$dompram&action=POST&p2=xml";
-        echo 'url: "'.$url.'",';
+
+<? } ?>
+<? if ($ok) {
+
+            $url =  "http://$eedip/script/?exec=2B_domzevents.php&domipp=$dompram&action=POST&p2=xml";
+            echo 'url: "'.$url.'",';
 ?>
-        data: JSON.stringify(myTable.data().toArray()),
-        success:function(result) {
-          alert('La sauvegarde a été effectée avec succes.');
-        },
-        error:function(result) {
-          alert('Une erreur eest surevenue lors de la sauvegarde !');
-        }
+            data: JSON.stringify(myTable.data().toArray()),
+            success:function(result) {
+              alert('La sauvegarde a été effectée avec succes.');
+            },
+            error:function(result) {
+              alert('Une erreur est surevenue lors de la sauvegarde !');
+            }
+        });
     });
 });
-});
+<? } ?>
 </script>
 </head>
 
@@ -411,7 +419,7 @@ $("#send").on("click", function(e) {
  
   <div class="container">
        <h3><center>Configuration des evenements domoticz vers eedomus</center></h3>
-       
+<? if ($ok) { ?>       
   <table cellpadding="0" cellspacing="0" border="0" class="dataTable table table-striped" id="config">
   </table>
   <form method="post">
@@ -419,6 +427,13 @@ $("#send").on("click", function(e) {
   <button id="send" value="" name="send" class="dt-button">Enregistrer vos modifications...</button>  
   </center></p>
 </form>
+<? } else { ?>
+   <div class="alert alert-danger" role="alert">
+   <center>Une erreur est survenue lors du chargement des données !<br> (Vérifier les informations de connexion au serveur Domoticz)</center>
+    </div>
+<? } ?>
+
+
 </div>
 </body>
 </html>
