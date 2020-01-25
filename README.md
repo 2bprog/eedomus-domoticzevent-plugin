@@ -4,6 +4,19 @@ Ce plugin permet de configurer l'envoi de données de Domoticz vers l'Eedomus.
 Pour ce faire, il injecte dans Domoticz un script dzevents 'domzevents_plugin'. 
 Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée automatiquement.
 
+**  Types d'information domoticz gérés **
+
+* Température (rfxcom, deCONZ)
+* Humidité (rfxcom, deCONZ)
+* Pression (deCONZ)
+* Liminosité (deCONZ)
+* Niveau de batterie (rfxcom, deCONZ)
+* Indicateur de signal (rfxcom)
+* Off/On, Fermé/Ouvert, Ras/Mouvemement (0/1) 
+* Off/On, Fermé/Ouvert, Ras/Mouvemement (0/100)
+* Valeur brute : nValue
+* [deConzAct](https://github.com/2bprog/eedomus-deconzact-plugin) - On/Off et Luminosité (deCONZ)
+
 Voici  un exemple pour envoyer la valeur d'un capteur de température.
 
 ![Exemple pour un capteur de température](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/exemple-temp.jpg)
@@ -16,6 +29,7 @@ Ce plugin peut être utilisé en complément de [deconzact](https://forum.eedomus.c
 * Acces au reseau local de la box Eedomus et de Domoticz
 
 ## Installation
+
 Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store eedomus" / "Domoticz - Events" / "Créer"
 
 ![Configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfg1.jpg)
@@ -25,7 +39,7 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 ![Champs à configurer](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfg2.jpg)
 
 
-### IP + Port, Utilisateur et Mode de passe pour l'acces au serveur domoticz
+### Confifuration Domoticz
 
 * IP Local et port (par défaut : 8080) du serveur Domoticz
 
@@ -34,14 +48,14 @@ Dans les cas ou l'acces au serveur Domoticz est sécurisé il vous faut renseigné 
 * Utilisateur (facultatif) 
 * Mot de passe (facultatif)
 
-### IP de votre eedomus
+### Configuration Eedomus
 
 * IP Local de votre Eedomus
 
-### Afficher le confuguration
+### Afficher le configuration
 
-* un fois les informations (au dessus) configurées, vous pouvez afficher la fenêtre de configuration.
-Cela vous permet de vérifier que les informations saisies sont correctes.
+* un fois les informations (au dessus) configurées, vous pouvez afficher la fenêtre de configuration en utilisant le lien "Cliquer ici".
+Cela permet de vérifier que les informations saisies sont correctes.
 
 ### Création du Widget  : 
 
@@ -80,18 +94,7 @@ Cela vous permet de vérifier que les informations saisies sont correctes.
 ![domz-script](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domz-script.JPG)
 
 
-## Types d'information domoticz gérés et testés
 
-* Température (rfxcom, deCONZ)
-* Humidité (rfxcom, deCONZ)
-* Pression (deCONZ)
-* Liminosité (deCONZ)
-* Niveau de batterie (rfxcom, deCONZ)
-* Indicateur de signal (rfxcom)
-* Off/On, Fermé/Ouvert, Ras/Mouvemement (0/1) 
-* Off/On, Fermé/Ouvert, Ras/Mouvemement (0/100)
-* Valeur brute : nValue
-* [deConzAct](https://github.com/2bprog/eedomus-deconzact-plugin) - On/Off et Luminosité (deCONZ)
 
 ## Remarques 
 
