@@ -21,8 +21,6 @@ Voici  un exemple pour envoyer la valeur d'un capteur de température.
 
 ![Exemple pour un capteur de température](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/exemple-temp.jpg)
 
-Ce plugin peut être utilisé en complément de [deconzact](https://forum.eedomus.com/viewtopic.php?f=50&t=9236) et [deconzcap](https://forum.eedomus.com/viewtopic.php?f=50&t=9238) 
-
 ## Prérequis
 
 * Un serveur Domoticz sur votre réseau local
@@ -36,10 +34,9 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 
 ## Champs à configurer : 
 
-![Champs à configurer](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfg2.jpg)
 
 
-### Confifuration Domoticz
+### Configuration Domoticz
 
 * IP Local et port (par défaut : 8080) du serveur Domoticz
 
@@ -56,6 +53,12 @@ Dans les cas ou l'acces au serveur Domoticz est sécurisé il vous faut renseigné 
 
 * un fois les informations (au dessus) configurées, vous pouvez afficher la fenêtre de configuration en utilisant le lien "Cliquer ici".
 Cela permet de vérifier que les informations saisies sont correctes.
+
+Voici le message qui s'affichera en cas d'erreur de configuration ou de serveur non accessible
+![Erreur de lecture](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfgerr.jpg)
+
+En cas de succes la fenêtre suivante doit s'afficher :
+![Erreur de lecture](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfgok.jpg)
 
 ### Création du Widget  : 
 
