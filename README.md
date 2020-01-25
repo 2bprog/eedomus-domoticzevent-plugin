@@ -40,7 +40,7 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 
 * IP Local et port (par défaut : 8080) du serveur Domoticz
 
-Dans les cas ou l'acces au serveur Domoticz est sécurisé il vous faut renseigné les champs suivants (sinon vous pouvez les laisser vides):
+Dans les cas ou l'acces au serveur Domoticz est sécurisé, il vous faut renseigné les champs suivants (sinon vous pouvez les laisser vides):
 
 * Utilisateur (facultatif) 
 * Mot de passe (facultatif)
@@ -51,30 +51,31 @@ Dans les cas ou l'acces au serveur Domoticz est sécurisé il vous faut renseigné 
 
 ### Afficher le configuration
 
-* un fois les informations (au dessus) configurées, vous pouvez afficher la fenêtre de configuration en utilisant le lien "Cliquer ici".
-Cela permet de vérifier que les informations saisies sont correctes.
+* un fois les informations de configuration Demoticz et Eedomus renseignées, vous pouvez afficher la fenêtre de configuration en utilisant le lien "Cliquer ici". Cela permet de vérifier que les informations saisies sont correctes.
 
-Voici le message qui s'affichera en cas d'erreur de configuration ou de serveur non accessible
+* Voici le message qui s'affichera en cas d'erreur de configuration ou de serveur non accessible
 ![Erreur de lecture](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfgerr.jpg)
 
-En cas de succes la fenêtre suivante doit s'afficher :
+* En cas de succes la fenêtre suivante doit s'afficher :
 ![Erreur de lecture](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfgok.jpg)
 
 ### Création du Widget  : 
 
-* La sélection de cet élément permet de créer le Widget qui donnera acces à Domoticz et à la fentre de configuration.
+* La sélection de cet élément permet de créer le Widget qui vous donnera acces à votre serveur Domoticz, à l'eedomus en local et à la fenêtre de configuration.
  
 ## Le widget
 
+* Ce Widget vous permet la fenêtre de configuration en cliquant sur le bouton "Cliquez ici (Ip eedomus)"
+
 ![Acces a la configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/widget.JPG)
 
-* Cette fenêtre vous permet d'acceder à Domoticz et d'afficher la fenêtre de configuration en cliquant sur le bouton 
 
 ## Fenêtre de configuration
 
+* La fenêtre ci-dessous affichera les échanges configués entre Domoticz et Lors du 1er lancement la liste affichera **"Aucune donnée disponible dans le tableau"**
+
 ![Acces a la configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/config.JPG)
 
-* Lors du 1er lancement la liste affichera **"Aucune donnée disponible dans le tableau"**
 
 #### Ajouter / Modifier / Supprimer 
 
@@ -99,7 +100,7 @@ En cas de succes la fenêtre suivante doit s'afficher :
 ## Remarques 
 
 * La fenêtre de configuration fonctionne seulement sur votre réseau local.
-* Ce plugin peut être utilisé en complément de [deconzact](https://forum.eedomus.com/viewtopic.php?f=50&t=9236) et [deconzcap](https://forum.eedomus.com/viewtopic.php?f=50&t=9238) 
+* Ce plugin peut être utilisé en complément des plugins [deconzact](https://forum.eedomus.com/viewtopic.php?f=50&t=9236) et [deconzcap](https://forum.eedomus.com/viewtopic.php?f=50&t=9238) 
 
 
 ## Sources et historique des versions
@@ -109,7 +110,10 @@ En cas de succes la fenêtre suivante doit s'afficher :
 
 ## Liens 
 
-* TODO
+* [Plugin eedomus deCONZAct sur Github](https://github.com/2bprog/eedomus-deconzact-plugin)
+* [Plugin eedomus deCONZCat sur Github](https://github.com/2bprog/eedomus-deconzact-plugin)
+* [Site officiel de Domoticz](https://www.domoticz.com/)
+* [DzVents dans Domoticz](https://www.domoticz.com/wiki/DzVents:_next_generation_LUA_scriptin)
 
 
 
