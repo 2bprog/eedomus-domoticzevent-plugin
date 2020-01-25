@@ -79,23 +79,30 @@ Dans les cas ou l'acces au serveur Domoticz est sécurisé, il vous faut renseigné
 
 #### Ajouter / Modifier / Supprimer 
 
-* Pour ajouter un nouvel echange, cliuez sur le bouton **Ajouter**, un fenêtre s'affichea vous permettant de sélectionner le périphérique source Domoticz, le périphérique destination et enfin le type d'information que vous voulez envoyer, une fois la configuration terminée, cliquez sur le bouton **Ajouter**, le message **Succès** doit apparaitre, vous pouvez ensuite fermer la fenêtre.
+* Pour ajouter un nouvel echange, cliuez sur le bouton **Ajouter**, un fenêtre s'affichea vous permettant de sélectionner le périphérique source Domoticz, le périphérique destination et enfin le type d'information que vous voulez envoyer.
 
 ![Ajouter](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/Ajouter.JPG)
 
-* Pour modifier un élement existant, sélectionnez la ligne dans le tableau, pui cliquer sur le bouton **Modifier**, une fenêtre 
+* Une fois la configuration terminée, cliquez sur le bouton **Ajouter**, le message **Succès** doit apparaitre, vous pouvez ensuite **Fermer** la fenêtre.
 
+![Ajouter](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/success.jpg)
 
+* Pour modifier un élement, sélectionnez la ligne dans le tableau, pui cliquer sur le bouton **Modifier**, le fonctionnement est similaire à l'ajout.
 
-### Sauvegarde des modifications
+* Pour supprimer un élement,sélectionnez la ligne dans le tableau, pui cliquer sur le bouton **Supprimer*.
+
+**Remarque** : 
+
+#### Sauvegarde des modifications
+
+* Après avoir effectuer vos modifications de configuration, il faut appliquer et sauvegarder votre configuration avec le bouton ci-dessous :
 
 ![save](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/save.JPG)
 
+* Le message suivant s'affichera si la sauvegarde a été avec succes.
+
 ![save-ok](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/save-ok.JPG)
 
-### Script généré sur Domoticz
-
-![domz-script](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domz-script.JPG)
 
 ## Remarques 
 
