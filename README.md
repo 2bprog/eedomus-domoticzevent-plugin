@@ -15,7 +15,7 @@ Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée aut
 * active - Off/On, Fermé/Ouvert, Ras/Mouvemement (0/1) (deCONZ)
 * active - Off/On, Fermé/Ouvert, Ras/Mouvemement (0/100) (deCONZ)
 * nvalue - Valeur brute : nValue (deCONZ)
-* active et level - [deConzAct](https://github.com/2bprog/eedomus-deconzact-plugin) - On/Off et Luminosité de 0 à 100 (deCONZ)
+* active et level - [deConzAct](https://forum.eedomus.com/viewtopic.php?f=50&t=9236) - On/Off et Luminosité de 0 à 100 (deCONZ)
 
 Voici  un exemple pour envoyer la valeur d'un capteur de température.
 
@@ -78,11 +78,11 @@ En cas de succes la fenêtre suivante doit s'afficher :
 
 #### Ajouter / Modifier / Supprimer 
 
-* Pour **ajouter** un nouvel echange, cliuez sur le bouton **Ajouter**, un fenêtre s'affichea vous permettant de sélectionner le périphérique source Domoticz, le périphérique destination et enfin le type d'information que vous voulez envoyer
+* Pour ajouter un nouvel echange, cliuez sur le bouton **Ajouter**, un fenêtre s'affichea vous permettant de sélectionner le périphérique source Domoticz, le périphérique destination et enfin le type d'information que vous voulez envoyer, une fois la configuration terminée, cliquez sur le bouton **Ajouter**, le message **Succès** doit apparaitre, vous pouvez ensuite fermer la fenêtre.
 
 ![Ajouter](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/Ajouter.JPG)
 
-* P
+* Pour modifier un élement existant, sélectionnez la ligne dans le tableau, pui cliquer sur le bouton **Modifier**, une fenêtre 
 
 
 
