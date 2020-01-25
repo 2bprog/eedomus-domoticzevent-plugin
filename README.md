@@ -62,6 +62,7 @@ Cela permet de vérifier que les informations saisies sont correctes.
 * La sélection de cet élément permet de créer le Widget qui donnera acces à Domoticz et à la fentre de configuration.
  
 ## Le widget
+
 ![Acces a la configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/widget.JPG)
 
 ## Fenêtre de configuration
@@ -93,13 +94,10 @@ Cela permet de vérifier que les informations saisies sont correctes.
 
 ![domz-script](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domz-script.JPG)
 
-
-
-
 ## Remarques 
 
-* la fenêtre de configuration fonctionne seulement sur votre réseau local.
-
+* La fenêtre de configuration fonctionne seulement sur votre réseau local.
+* Ce plugin peut être utilisé en complément de [deconzact](https://forum.eedomus.com/viewtopic.php?f=50&t=9236) et [deconzcap](https://forum.eedomus.com/viewtopic.php?f=50&t=9238) 
 
 
 ## Sources et historique des versions
