@@ -34,7 +34,7 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 
 ## Champs à configurer : 
 
-
+![Configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfg2.jpg)
 
 ### Configuration Domoticz
 
@@ -68,24 +68,23 @@ En cas de succes la fenêtre suivante doit s'afficher :
 
 ![Acces a la configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/widget.JPG)
 
+* Cette fenêtre vous permet d'acceder à Domoticz et d'afficher la fenêtre de configuration en cliquant sur le bouton 
+
 ## Fenêtre de configuration
 
 ![Acces a la configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/config.JPG)
 
-### Ajouter / Modifier / Supprimer 
+* Lors du 1er lancement la liste affichera **"Aucune donnée disponible dans le tableau"**
+
+#### Ajouter / Modifier / Supprimer 
+
+* Pour **ajouter** un nouvel echange, cliuez sur le bouton **Ajouter**, un fenêtre s'affichea vous permettant de sélectionner le périphérique source Domoticz, le périphérique destination et enfin le type d'information que vous voulez envoyer
+
 ![Ajouter](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/Ajouter.JPG)
 
-![Modifier](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/Modifier.JPG)
+* P
 
-![supprimer](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/supprimer.JPG)
 
-### Listes d'élément
-
-![list-domz](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/list-domz.JPG)
-
-![list-eed](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/list-eed.JPG)
-
-!! TODO CAPTURE : Type d'info
 
 ### Sauvegarde des modifications
 
