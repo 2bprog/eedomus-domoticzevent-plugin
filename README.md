@@ -36,10 +36,18 @@ Dans les cas ou l'acces au serveur Domoticz est sécurisé il vous faut renseigné 
 
 ### IP de votre eedomus
 
-** IP Local de votre Eedomus
+* IP Local de votre Eedomus
 
-## Widget crée  : 
+### Afficher le confuguration
 
+* un fois les informations (au dessus) configurées, vous pouvez afficher la fenêtre de configuration.
+Cela vous permet de vérifier que les informations saisies sont correctes.
+
+### Création du Widget  : 
+
+* La sélection de cet élément permet de créer le Widget qui donnera acces à Domoticz et à la fentre de configuration.
+ 
+## Le widget
 ![Acces a la configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/widget.JPG)
 
 ## Fenêtre de configuration
