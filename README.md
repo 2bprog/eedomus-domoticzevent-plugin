@@ -4,18 +4,18 @@ Ce plugin permet de configurer l'envoi de données de Domoticz vers l'Eedomus.
 Pour ce faire, il injecte dans Domoticz un script dzevents 'domzevents_plugin'. 
 Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée automatiquement.
 
-**  Types d'information domoticz gérés **
+**Types d'information domoticz gérés (Téstés avec)**
 
-* Température (rfxcom, deCONZ)
-* Humidité (rfxcom, deCONZ)
-* Pression (deCONZ)
-* Liminosité (deCONZ)
-* Niveau de batterie (rfxcom, deCONZ)
-* Indicateur de signal (rfxcom)
-* Off/On, Fermé/Ouvert, Ras/Mouvemement (0/1) 
-* Off/On, Fermé/Ouvert, Ras/Mouvemement (0/100)
-* Valeur brute : nValue
-* [deConzAct](https://github.com/2bprog/eedomus-deconzact-plugin) - On/Off et Luminosité (deCONZ)
+* temperature - Température (RFXcom, deCONZ)
+* humidity - Humidité (RFXcom, deCONZ)
+* pressure - Pression (deCONZ)
+* lux - Liminosité (deCONZ)
+* batteryLevel - Niveau de batterie (RFXcom, deCONZ)
+* signalLevel - Indicateur de signal (RFXcom)
+* active - Off/On, Fermé/Ouvert, Ras/Mouvemement (0/1) (deCONZ)
+* active - Off/On, Fermé/Ouvert, Ras/Mouvemement (0/100) (deCONZ)
+* nvalue - Valeur brute : nValue (deCONZ)
+* active et level - [deConzAct](https://github.com/2bprog/eedomus-deconzact-plugin) - On/Off et Luminosité de 0 à 100 (deCONZ)
 
 Voici  un exemple pour envoyer la valeur d'un capteur de température.
 
