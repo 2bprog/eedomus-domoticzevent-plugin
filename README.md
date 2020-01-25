@@ -1,15 +1,13 @@
-[EN COURS DE DEVELOPPEMENT / TEST / REDACTION]
-
 Ce plugin permet de configurer l'envoi de données de Domoticz vers l'Eedomus. 
-Pour ce faire, il injecte dans Domoticz un script dzevents 'domzevents_plugin'. 
+Pour ce faire, il injecte dans Domoticz un script dzVents 'domzevents_plugin'. 
 Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée automatiquement.
 
-**Types d'information domoticz gérés (Téstés avec)**
+**Types d'information Domoticz gérés (testé avec)**
 
 * temperature - Température (RFXcom, deCONZ)
 * humidity - Humidité (RFXcom, deCONZ)
 * pressure - Pression (deCONZ)
-* lux - Liminosité (deCONZ)
+* lux - Luminosité (deCONZ)
 * batteryLevel - Niveau de batterie (RFXcom, deCONZ)
 * signalLevel - Indicateur de signal (RFXcom)
 * active - Off/On, Fermé/Ouvert, Ras/Mouvemement (0/1) (deCONZ)
@@ -24,7 +22,7 @@ Voici  un exemple pour envoyer la valeur d'un capteur de température.
 ## Prérequis
 
 * Un serveur Domoticz sur votre réseau local
-* Acces au reseau local de la box Eedomus et de Domoticz
+* Accès au réseau local de la box Eedomus et de Domoticz
 
 ## Installation
 
@@ -40,7 +38,7 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 
 * IP Local et port (par défaut : 8080) du serveur Domoticz
 
-Dans les cas ou l'acces au serveur Domoticz est sécurisé, il vous faut renseigné les champs suivants (sinon vous pouvez les laisser vides):
+Dans les cas ou l’accès au serveur Domoticz est sécurisé, il vous faut renseigner les champs suivants (sinon vous pouvez les laisser vides):
 
 * Utilisateur (facultatif) 
 * Mot de passe (facultatif)
@@ -51,47 +49,45 @@ Dans les cas ou l'acces au serveur Domoticz est sécurisé, il vous faut renseigné
 
 ### Afficher le configuration
 
-* un fois les informations de configuration Demoticz et Eedomus renseignées, vous pouvez afficher la fenêtre de configuration en utilisant le lien "Cliquer ici". Cela permet de vérifier que les informations saisies sont correctes.
+* un fois les informations de configuration Domoticz et Eedomus renseignées, vous pouvez afficher la fenêtre de configuration en utilisant le lien "Cliquer ici". Cela permet de vérifier que les informations saisies sont correctes.
 
 * Voici le message qui s'affichera en cas d'erreur de configuration ou de serveur non accessible
 ![Erreur de lecture](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfgerr.jpg)
 
-* En cas de succes la fenêtre suivante doit s'afficher :
+* En cas de succès, la fenêtre suivante doit s'afficher :
 ![Erreur de lecture](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfgok.jpg)
 
-### Création du Widget  : 
+### Création du Widget 
 
-* La sélection de cet élément permet de créer le Widget qui vous donnera acces à votre serveur Domoticz, à l'eedomus en local et à la fenêtre de configuration.
+* La sélection de cet élément permet de créer le Widget qui vous donnera accès à votre serveur Domoticz, à l'Eedomus en local et à la fenêtre de configuration.
  
-## Le widget
+## Le Widget
 
 * Ce Widget vous permet la fenêtre de configuration en cliquant sur le bouton "Cliquez ici (Ip eedomus)"
 
-![Acces a la configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/widget.JPG)
+![Accès a la configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/widget.JPG)
 
 
 ## Fenêtre de configuration
 
-* La fenêtre ci-dessous affichera les échanges configués entre Domoticz et Lors du 1er lancement la liste affichera **"Aucune donnée disponible dans le tableau"**
+* La fenêtre ci-dessous affichera les échanges configurés entre Domoticz. Lors du 1er lancement la liste affichera **"Aucune donnée disponible dans le tableau"**
 
 ![Acces a la configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/config.JPG)
 
 
 #### Ajouter / Modifier / Supprimer 
 
-* Pour ajouter un nouvel echange, cliuez sur le bouton **Ajouter**, un fenêtre s'affichea vous permettant de sélectionner le périphérique source Domoticz, le périphérique destination et enfin le type d'information que vous voulez envoyer.
+* Pour ajouter un nouvel échange, cliquez sur le bouton **Ajouter**, une fenêtre s’affichera vous permettant de sélectionner le périphérique source Domoticz, le périphérique destination Eedomus et enfin le type d'information que vous voulez envoyer.
 
 ![Ajouter](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/Ajouter.JPG)
 
-* Une fois la configuration terminée, cliquez sur le bouton **Ajouter**, le message **Succès** doit apparaitre, vous pouvez ensuite **Fermer** la fenêtre.
+* Une fois la configuration terminée, cliquez sur le bouton **Ajouter**, le message **Succès** doit apparaître, vous pouvez ensuite **Fermer** la fenêtre.
 
 ![Ajouter](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/success.jpg)
 
-* Pour modifier un élement, sélectionnez la ligne dans le tableau, pui cliquer sur le bouton **Modifier**, le fonctionnement est similaire à l'ajout.
+* Pour modifier un élément, sélectionnez la ligne dans le tableau, puis cliquez sur le bouton **Modifier**, le fonctionnement est similaire à l'ajout.
 
-* Pour supprimer un élement,sélectionnez la ligne dans le tableau, pui cliquer sur le bouton **Supprimer*.
-
-**Remarque** : 
+* Pour supprimer un élément,sélectionnez la ligne dans le tableau, puis cliquez sur le bouton **Supprimer**.
 
 #### Sauvegarde des modifications
 
@@ -99,7 +95,7 @@ Dans les cas ou l'acces au serveur Domoticz est sécurisé, il vous faut renseigné
 
 ![save](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/save.JPG)
 
-* Le message suivant s'affichera si la sauvegarde a été avec succes.
+* Le message suivant s'affichera si la sauvegarde a été avec succès. Votre configuration sera alors effective.
 
 ![save-ok](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/save-ok.JPG)
 
@@ -119,8 +115,8 @@ Dans les cas ou l'acces au serveur Domoticz est sécurisé, il vous faut renseigné
 
 * [Plugin eedomus deCONZAct sur Github](https://github.com/2bprog/eedomus-deconzact-plugin)
 * [Plugin eedomus deCONZCat sur Github](https://github.com/2bprog/eedomus-deconzact-plugin)
+* [Site officiel d'Eedomus](https://www.eedomus.com/)
 * [Site officiel de Domoticz](https://www.domoticz.com/)
 * [DzVents dans Domoticz](https://www.domoticz.com/wiki/DzVents:_next_generation_LUA_scriptin)
-
 
 
