@@ -44,7 +44,7 @@ if ($action=='WIDGET' && $doHTML)
 ?>
 <div>
     <center>
-        <spam style="font: 12px tahoma;">Configuration des evenements <a href="http://<?echo $domipp?>" target="_blank">domoticz</a> vers l'eedomus</spam><br>
+        <spam style="font: 12px tahoma;">Configuration des evenements <a href="http://<?echo $domipp?>" target="_blank">domoticz</a> vers l' <a href="http://<?echo $eedip?>" target="_blank">eedomus</a></spam><br>
         <button style="font: 12px tahoma; margin-top:10px;" onclick="javascript:window.open('http://<?echo $eedip?>/script/?exec=2B_domzevents.php&eedip=<?echo $eedip?>&domipp=<?echo $dompram?>&p2=html','domzevents','width=1280,height=700,toolbar=no');">Cliquez ici (<?echo $eedip?>)</button>
     </center>
 </div>
