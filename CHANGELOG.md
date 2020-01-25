@@ -1,3 +1,3 @@
-## v0.0.X-beta (XX/XX/2020)
+## v0.0.1-beta (25/01/2020)
 
 * Version initiale
