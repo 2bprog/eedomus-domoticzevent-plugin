@@ -1,4 +1,4 @@
-## v0.0.X-beta (XX/WW/2020)
+## v0.0.2-beta (28/01/2020)
 
 * Ajout échange etat télécommade au format deCONZ domoticz (0, 10, 20, ...)
 * Ajout échange de la pression atmosphérique
