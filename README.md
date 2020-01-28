@@ -6,14 +6,18 @@ Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée aut
 
 * temperature - Température (RFXcom, deCONZ)
 * humidity - Humidité (RFXcom, deCONZ)
-* pressure - Pression (deCONZ)
+* barometer - Pression atmosphérique (deCONZ)
+* pressure - Pression 
 * lux - Luminosité (deCONZ)
 * batteryLevel - Niveau de batterie (RFXcom, deCONZ)
+* batteryLevel - Niveau de batterie - Indicateur (RFXcom, deCONZ)
 * signalLevel - Indicateur de signal (RFXcom)
+* nvalue - Valeur brute : nValue (deCONZ)
 * active - Off/On, Fermé/Ouvert, Ras/Mouvemement (0/1) (deCONZ)
 * active - Off/On, Fermé/Ouvert, Ras/Mouvemement (0/100) (deCONZ)
-* nvalue - Valeur brute : nValue (deCONZ)
+* nvalue et level : [deConzCap](https://forum.eedomus.com/viewtopic.php?f=50&t=9238) - etat télécommade au format deCONZ domoticz (deCONZ)
 * active et level - [deConzAct](https://forum.eedomus.com/viewtopic.php?f=50&t=9236) - On/Off et Luminosité de 0 à 100 (deCONZ)
+* getColor - [deConzAct](https://forum.eedomus.com/viewtopic.php?f=50&t=9236) - Couleur au format eedomus R,G,B (0 à 100) (deCONZ)
 
 Voici  un exemple pour envoyer la valeur d'un capteur de température.
 
