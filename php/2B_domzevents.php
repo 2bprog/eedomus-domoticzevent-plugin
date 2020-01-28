@@ -5,6 +5,7 @@ domipp=[IP:PORT,[user:pwd]]
 action=[SET|POST|WIDGET]
 api=[code API pour le SET]
 val=[valeur pour le SET]
+bat=[0 ou 1] pour le SET 1 = utilisation de la Fonction setBattery 
 p2=[xml|[html]
 */
 
@@ -34,10 +35,51 @@ $controller_id=getArg("controller_id",false, '');
 $action = strtoupper(getArg("action",false, ''));
 $api = getArg("api",false, '');
 $val = getArg("val",false, '');
+$bat = getArg("bat",false, 0);
+$fv = getArg("fv",false, 0);
+
+
 $p2 = strtoupper(getArg("p2", false, 'XML'));
 
 $doXML = ($p2 == 'XML');
 $doHTML = ($p2 == 'HTML');
+
+if ($action == 'SET')
+{   
+    sdk_header("text/xml");
+    $success = '0';
+    $eedomus = '';
+    $ok = ($api != '');
+    if ($ok) $ok=sdk_eedomusHttp("http://localhost/api/get?action=periph.caract&periph_id=".$api, 'GET', '', $eedomus, $doXML);
+    if ($ok)
+    {
+        $lastchange =  strtotime($eedomus['body']['last_value_change']);
+        $lvduration =  (time() - $lastchange) ;
+        $battery = $eedomus['body']['battery'];
+        $lastvalue =  $eedomus['body']['last_value'];    
+        
+    	if ($bat == 1)
+    	{
+    	    if ($battery != $val || $lvduration >= 3600)
+    		    setBattery($api, $val);
+    	}
+    	else
+    	{	
+    	    
+    		if ($fv == 0)
+    		{
+    			$periph = getValue($api);
+    			$fv = $periph["value"] !=  $val;
+    		}
+    		if ($fv != 0 || $lastvalue != $val || $lvduration >= 3600) setValue($api, $val, false, true);	
+    	}
+    	$success= '1';
+    }
+    else
+    sdk_echoxml('success', $success, true);
+    
+    die();
+}
 
 if ($action=='WIDGET' && $doHTML)
 {
@@ -53,22 +95,15 @@ die();
 }
 
 
-if ($action == 'SET' && $api != '')
-{   
-    $periph = getValue($api);
-    if ($periph["value"] !=  $val)   setValue($api, $val, false, true);	
-    sdk_header("text/xml");
-    sdk_echoxml('success', '1', true);
-    die();
-}
-
-
-
 $defscript="
 return { 
-        on = {devices = { ##ITEMS## } },
+        on = {devices = { ##ITEMS## }
+               },
         logging = {level = domoticz.LOG_INFO, marker = 'eedomz_plugin' },    
-    execute = function(dz,item)
+		execute = function(dz,item)
+    
+    --  BUG domoticz timedOut => besoin de timer
+    -- ,timer = { 'every 5 minutes' }
     
      local _cfgjs = ''
     -- ##LINKS## 
@@ -79,44 +114,78 @@ return {
    
     functions = {
       ['temp'] = function() return _u.round(item.temperature, 2) end,
-      ['hum'] = function() return _u.round(item.humidity, 0)  end,
-      ['pres'] = function() return _u.round(item.pressure, 0)  end,
-      ['lux'] = function() return _u.round(item.lux, 0)  end,
-      ['bat'] = function() return _u.round(item.batteryLevel, 0)  end,
-      ['siglvl'] = function() return _u.round(item.signalLevel, 0)  end,
-      ['com'] = function()  if (item.timedOut)  then return 0  end return 1 end,
+      ['hum'] = function() return math.floor(item.humidity)  end,
+      ['baro'] = function() return math.floor(item.barometer)  end,
+      ['pres'] = function() return math.floor(item.pressure)  end,
+      ['lux'] = function() return math.floor(item.lux)  end,
+      ['bat'] = function() return math.floor(item.batteryLevel)  end,
+	  ['ibat'] = function() return math.floor(item.batteryLevel)  end,
+      ['siglvl'] = function() return math.floor(item.signalLevel)  end,
+      ['nvalue'] = function() return item.nvalue  end,
+      -- BUG domoticz timedOut ['com'] = function()  if (item.timedOut)  then return 0  end return 1 end,
       ['0ou1'] = function()  if (item.active)  then return 1  end return 0 end,
       ['0ou100'] = function()  if (item.active)  then return 100  end return 0 end,
-      ['nvalue'] = function() return _u.round(item.nvalue, 0)  end,
+      ['dzcmd'] = function()  if item.level == nil then return 0 end return item.level  end,
       ['dzbri'] = function()  val=0  if item.active then val =  math.floor(item.level / 10 + 0.5) * 10  
                               if val == 0 then val = 1 end  end return val end,
+      ['eecol'] = function()  c = item.getColor()
+                               ret = tostring(math.floor(c.r / 25.4) * 10) ..',' .. tostring(math.floor(c.g / 25.4) * 10) ..',' .. tostring(math.floor(c.b / 25.4) * 10)
+                               dz.log(ret)
+                              return ret end
+							  
     }
-   
-   
-
-    local cfgar = dz.utils.fromJSON(_cfgjs) 
-
-    cfg = cfgar[tostring(item.id)];
-    if not (cfg ==  nil) then
-        for k, v in pairs(cfg) do
-            for ideed, element in pairs(v) do
   
-                fn = functions[element]
-                if not (fn ==  nil) then
-                    if item.changed then
-                        val = fn()
-                        dz.log('ID ' .. item.id .. ' send : ' .. tostring(val) .. ' to ' .. tostring(ideed), dz.LOG_INFO) 
-                        urleedomus = 'http://".$eedip."/script/?exec=2B_domzevents.php&action=SET&api=' .. ideed .. '&val=' .. tostring(val)
-                        dz.openURL({ url = urleedomus , method = 'GET' })
-                    end 
-                else
-                    dz.log('Function : ' .. tostring(element) .. ' not found', dz.LOG_ERROR) 
-                end 
-            end
+    local cfgar = dz.utils.fromJSON(_cfgjs) 
+    local istmr = item.isTimer
+    local isdev = item.isDevice
+    
+    dz.log('timer:' .. tostring(istmr) .. ' device '.. tostring(isdev))
+    
+    cfgs = cfgar
+    if (isdev) then
+        cfg = cfgs[tostring(item.id)]
+        cfgs = {}
+        if not (cfg ==  nil) then
+            cfgs[tostring(item.id)] =  cfg
         end
-    else
-        dz.log('ID : ' .. tostring(item.id) .. ' not found', dz.LOG_ERROR) 
     end 
+    
+    for id, cfg in pairs(cfgs) do
+        item = dz.devices(tonumber(id))
+        if not (item ==  nil) then
+            for k, v in pairs(cfg) do
+                for ideed, elements in pairs(v) do
+                    
+                    for i, element in ipairs(elements) do
+                    
+                        if (istmr and not (element =='com')) then
+                            goto continue 
+                        end
+      
+                        fn = functions[element]
+                        if not (fn ==  nil) then
+                            if item.changed or element == 'com'  then
+                                setbat = 0
+        					    if (element == 'ibat') then
+        							setbat = 1
+        						end
+                                val = fn()
+                                dz.log('ID ' .. item.id .. ' send : ' .. tostring(val) .. ' to ' .. tostring(ideed), dz.LOG_INFO) 
+                                 urleedomus = 'http://".$eedip."/script/?exec=2B_domzevents.php&action=SET&api=' .. ideed .. '&val=' .. tostring(val) ..'&bat=' .. tostring(setbat)..'&fv=0' 
+                                 --.. tostring(istmr and 1 or 0)
+                                dz.openURL({ url = urleedomus , method = 'GET' })
+                            end 
+                        else
+                            dz.log('Function : ' .. tostring(element) .. ' not found', dz.LOG_ERROR) 
+                        end 
+                        ::continue::
+                    end
+                end
+            end
+        else
+            dz.log('ID : ' .. tostring(id) .. ' not found', dz.LOG_ERROR) 
+        end 
+    end
 end
 }";
 
@@ -172,6 +241,7 @@ if ($action == 'POST')
 if (!$savedone && $ok)
 {
     // chargement id eedomus
+    $eedomus = '';
     $ok=sdk_eedomusHttp("http://localhost/api/get?action=periph.list", 'GET', '', $eedomus, $doXML);
     $eeids = &$eedomus['body'];
     $seleeids = '';
@@ -206,15 +276,19 @@ if (!$savedone && $ok)
     $selechange = '{';
     $selechange = $selechange .'"temp":"Température",';
     $selechange = $selechange .'"hum":"Humidité",';
+    $selechange = $selechange .'"baro":"Pression atmosphérique",';
     $selechange = $selechange .'"pres":"Pression",';
     $selechange = $selechange .'"lux":"Luminosité",';
     $selechange = $selechange .'"bat":"Niveau de batterie",';
+	$selechange = $selechange .'"ibat":"Niveau de batterie - Indicateur Eedomus",';
     $selechange = $selechange .'"siglvl":"Indicateur de signal",';
-    //$selechange = $selechange .'"com":"Etat de la communication",';
+    $selechange = $selechange .'"nvalue":"Valeur numérique brute : nValue",';
+    // BUG domoticz timedOut $selechange = $selechange .'"com":"Etat de la communication (O=KO ou 1=OK)",';
     $selechange = $selechange .'"0ou1":"Off/On, Ferm./Ouv. Ras/Mouv. (0 ou 1)",';
     $selechange = $selechange .'"0ou100":"Off/On, Ferm./Ouv. Ras/Mouv. (0 ou 100)",';    
-    $selechange = $selechange .'"nvalue":"Valeur numérique brute : nValue",';
-    $selechange = $selechange .'"dzbri":"deConzAct - On/Off et Luminosité "';
+    $selechange = $selechange .'"dzcmd":"deConzCap - Etat télécommande ",';
+    $selechange = $selechange .'"dzbri":"deConzAct - On/Off et Luminosité ",';
+	$selechange = $selechange .'"eecol":"deConzAct - Couleur au format Eedomus R,G,B (0 à 100) "';
     $selechange = $selechange . '}';
     
     if ($doXML) sdk_echoxml('selechange', $selechange, $doXML);  
@@ -272,10 +346,18 @@ $(document).ready(function() {
         {
              foreach ($valuedom as $keyidx => $valuear)
             {
-                echo '{ domzid:'.$keydom.' ,';
                 foreach ($valuear as $keyeed => $valuetype)
                 {
-                    echo 'eeid:'.$keyeed.', ech:"'.$valuetype.'"},'."\r\n";
+                    $types = array();
+                    if (is_string($valuetype))
+                        $types[] = $valuetype;
+                    else
+                        $types = $valuetype;
+                    foreach ($types as $type)
+                    {
+                        echo '{ domzid:'.$keydom.' ,','eeid:'.$keyeed.', ech:"'.$type.'"},'."\r\n";
+                    }
+
                 }
             }
         }
@@ -501,7 +583,8 @@ function sdk_createOrupdateScripts($domheader, $domipp, &$domzscripts, $defscrip
         $result = '';
         $defscript = str_replace('##ITEMS##',$items,$defscript);
         $defscript = str_replace('##ITEMSCFG##',$itemscfg,$defscript);
-        $defscript = str_replace('&','%26',$defscript);
+		$defscript = str_replace('%','%25',$defscript);
+        $defscript = str_replace('&','%26',$defscript);		
         $params=$eventid."type=event&param=create&name=$key&interpreter=dzVents&eventtype=Device&eventstatus=$actif&xml=$defscript";
         $ok=sdk_domzHttp("http://$domipp/event_create.webem", 'POST', $params, $domheader, $result, $doXML );
         if (!$ok)     break;
@@ -551,7 +634,7 @@ function sdk_decodecfg($js, &$luahdr, &$luacfg, $doXML)
     $tmpitems = array();
     foreach ($newcfg  as $key => $value)
     {
-        $tmpitems[$value['domzid']][$value['eeid']] = $value['ech'];
+        $tmpitems[$value['domzid']][$value['eeid']][] = $value['ech'];
     }
     $luaitem1 = '';
     $luaitem2 = '';
@@ -563,10 +646,20 @@ function sdk_decodecfg($js, &$luahdr, &$luacfg, $doXML)
         if ($luaitem2 != '') $luaitem2 = $luaitem2.','."'\r\n";
         $luaitem2 = $luaitem2."_cfgjs =_cfgjs ..'".'"'.$key.'" : [';
         $luaitem3 = '';
-        foreach ($value  as $ideed => $echange)
+        foreach ($value  as $ideed => $echanges)
         {
              if ($luaitem3 != '') $luaitem3 = $luaitem3.',';
-             $luaitem3 = $luaitem3.'{ "'.$ideed.'" : "'.$echange.'"}';
+             $luaitem3 = $luaitem3.'{ "'.$ideed.'" : [';
+             
+             $luaitem4 = '';
+             foreach($echanges as $echange)
+             {
+                 if ($luaitem4 != '') $luaitem4 = $luaitem4.',';
+                 $luaitem4 = $luaitem4.'"'.$echange.'"';
+             }
+                 
+            $luaitem3 = $luaitem3.$luaitem4.']}';
+                 
         }
         $luaitem2 = $luaitem2.$luaitem3.']';
     }
