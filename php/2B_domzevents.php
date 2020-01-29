@@ -50,7 +50,7 @@ if ($action == 'SET')
     $success = '0';
     $eedomus = '';
     $ok = ($api != '');
-    if ($ok) $ok=sdk_eedomusHttp("http://localhost/api/get?action=periph.caract&periph_id=".$api, 'GET', '', $eedomus, $doXML);
+    if ($ok) $ok=sdk_eedomusHttp("http://localhost/api/get?action=periph.caract&periph_id=".$api, 'GET', '', $eedomus, false);
     if ($ok)
     {
         $lastchange =  strtotime($eedomus['body']['last_value_change']);
@@ -65,12 +65,6 @@ if ($action == 'SET')
     	}
     	else
     	{	
-    	    
-    		if ($fv == 0)
-    		{
-    			$periph = getValue($api);
-    			$fv = $periph["value"] !=  $val;
-    		}
     		if ($fv != 0 || $lastvalue != $val || $lvduration >= 3600) setValue($api, $val, false, true);	
     	}
     	$success= '1';
@@ -98,6 +92,7 @@ die();
 $defscript="
 return { 
         on = {devices = { ##ITEMS## }
+			  ,timer = { 'every 180 minutes' }
                },
         logging = {level = domoticz.LOG_INFO, marker = 'eedomz_plugin' },    
 		execute = function(dz,item)
@@ -158,21 +153,27 @@ return {
                     
                     for i, element in ipairs(elements) do
                     
-                        if (istmr and not (element =='com')) then
+                        iselttmr =  ((element =='bat') or  (element =='ibat'))
+                        
+                        -- les informations battery sont pousser toutes les X minutes via timer
+                        if (istmr and not iselttmr ) then
+                            goto continue 
+                        end
+                        
+                        if (isdev and  iselttmr ) then
                             goto continue 
                         end
       
                         fn = functions[element]
                         if not (fn ==  nil) then
-                            if item.changed or element == 'com'  then
+                            if item.changed or iselttmr  then
                                 setbat = 0
         					    if (element == 'ibat') then
         							setbat = 1
         						end
                                 val = fn()
-                                dz.log('ID ' .. item.id .. ' send : ' .. tostring(val) .. ' to ' .. tostring(ideed), dz.LOG_INFO) 
-                                 urleedomus = 'http://".$eedip."/script/?exec=2B_domzevents.php&action=SET&api=' .. ideed .. '&val=' .. tostring(val) ..'&bat=' .. tostring(setbat)..'&fv=0' 
-                                 --.. tostring(istmr and 1 or 0)
+                                dz.log('Elmt:'..element..' ID:' .. item.id .. ' send:' .. tostring(val) .. ' to ' .. tostring(ideed), dz.LOG_INFO) 
+                                 urleedomus = 'http://".$eedip."/script/?exec=2B_domzevents.php&action=SET&api=' .. ideed .. '&val=' .. tostring(val) ..'&bat=' .. tostring(setbat)..'&fv='..tostring(istmr and 1 or 0)                                 
                                 dz.openURL({ url = urleedomus , method = 'GET' })
                             end 
                         else
