@@ -1,3 +1,7 @@
+## ENCOURS
+
+* Utilisation d'un timer à 30min pour les echanges des niveaux de batterie
+
 ## v0.0.2-beta (28/01/2020)
 
 * Ajout échange etat télécommade au format deCONZ domoticz (0, 10, 20, ...)
