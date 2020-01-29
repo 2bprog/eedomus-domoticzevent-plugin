@@ -69,7 +69,7 @@ if ($action == 'SET')
     	}
     	$success= '1';
     }
-    else
+    
     sdk_echoxml('success', $success, true);
     
     die();
@@ -92,7 +92,7 @@ die();
 $defscript="
 return { 
         on = {devices = { ##ITEMS## }
-			  ,timer = { 'every 180 minutes' }
+			  ,timer = { 'every 30 minutes' }
                },
         logging = {level = domoticz.LOG_INFO, marker = 'eedomz_plugin' },    
 		execute = function(dz,item)
