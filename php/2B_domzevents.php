@@ -47,10 +47,11 @@ $doHTML = ($p2 == 'HTML');
 if ($action == 'SET')
 {   
     sdk_header("text/xml");
+    echo "<$action>";
     $success = '0';
     $eedomus = '';
     $ok = ($api != '');
-    if ($ok) $ok=sdk_eedomusHttp("http://localhost/api/get?action=periph.caract&periph_id=".$api, 'GET', '', $eedomus, false);
+    if ($ok) $ok=sdk_eedomusHttp("http://localhost/api/get?action=periph.caract&periph_id=".$api, 'GET', '', $eedomus, true);
     if ($ok)
     {
         $lastchange =  strtotime($eedomus['body']['last_value_change']);
@@ -65,13 +66,22 @@ if ($action == 'SET')
     	}
     	else
     	{	
-    		if ($fv != 0 || $lastvalue != $val || $lvduration >= 3600) setValue($api, $val, false, true);	
+    	    sdk_echoxml('force', $fv, true);
+    	    sdk_echoxml('lastvalue', $lastvalue, true);
+    	    sdk_echoxml('lvduration', $lvduration, true);
+    	    
+    		if ($fv != 0 || $lastvalue != $val || $lvduration >= 3600) 
+    		{
+    		    sdk_echoxml('api', $api, true);
+    		    sdk_echoxml('valset', $val, true);
+    		    setValue($api, $val, false, true);	
+    		}
     	}
     	$success= '1';
     }
     
     sdk_echoxml('success', $success, true);
-    
+    echo "</$action>";
     die();
 }
 
