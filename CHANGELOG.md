@@ -1,5 +1,7 @@
 ## ENCOURS
 
+* Changement de l'ordre des colonnes dans la fenêtre de configuration
+* Retourne les températures avec une décimale
 * Utilisation d'un timer à 30min pour les echanges des niveaux de batterie
 
 ## v0.0.2-beta (28/01/2020)
