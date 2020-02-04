@@ -1,4 +1,4 @@
-Ce plugin permet de configurer l'envoi de données de Domoticz vers l'Eedomus. 
+Ce plugin permet de configurer l'envoi de données de Domoticz vers l'Eedomus en temps réèl. 
 Pour ce faire, il injecte dans Domoticz un script dzVents 'domzevents_plugin'. 
 Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée automatiquement.
 
@@ -15,7 +15,7 @@ Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée aut
 * nvalue - Valeur brute : nValue (deCONZ)
 * active - Off/On, Fermé/Ouvert, Ras/Mouvemement (0/1) (deCONZ)
 * active - Off/On, Fermé/Ouvert, Ras/Mouvemement (0/100) (deCONZ)
-* nvalue et level : [deConzCap](https://forum.eedomus.com/viewtopic.php?f=50&t=9238) - etat télécommade au format deCONZ domoticz (deCONZ)
+* level : [deConzCap](https://forum.eedomus.com/viewtopic.php?f=50&t=9238) - etat télécommade au format deCONZ domoticz (deCONZ)
 * active et level - [deConzAct](https://forum.eedomus.com/viewtopic.php?f=50&t=9236) - On/Off et Luminosité de 0 à 100 (deCONZ)
 * getColor - [deConzAct](https://forum.eedomus.com/viewtopic.php?f=50&t=9236) - Couleur au format eedomus R,G,B (0 à 100) (deCONZ)
 
@@ -76,18 +76,18 @@ Dans les cas ou l’accès au serveur Domoticz est sécurisé, il vous faut renseigne
 
 * La fenêtre ci-dessous affichera les échanges configurés entre Domoticz. Lors du 1er lancement la liste affichera **"Aucune donnée disponible dans le tableau"**
 
-![Acces a la configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/config.JPG)
+![Acces a la configuration](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/config.0.0.3.JPG)
 
 
 #### Ajouter / Modifier / Supprimer 
 
 * Pour ajouter un nouvel échange, cliquez sur le bouton **Ajouter**, une fenêtre s’affichera vous permettant de sélectionner le périphérique source Domoticz, le périphérique destination Eedomus et enfin le type d'information que vous voulez envoyer.
 
-![Ajouter](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/Ajouter.JPG)
+![Ajouter](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/Ajouter.0.0.3.JPG)
 
 * Une fois la configuration terminée, cliquez sur le bouton **Ajouter**, le message **Succès** doit apparaître, vous pouvez ensuite **Fermer** la fenêtre.
 
-![Ajouter](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/success.jpg)
+![Ajouter](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/success.0.0.3.jpg)
 
 * Pour modifier un élément, sélectionnez la ligne dans le tableau, puis cliquez sur le bouton **Modifier**, le fonctionnement est similaire à l'ajout.
 
@@ -117,6 +117,7 @@ Dans les cas ou l’accès au serveur Domoticz est sécurisé, il vous faut renseigne
 
 ## Liens 
 
+* [Domoticz - Events sur le forum eedomus] (https://forum.eedomus.com/viewtopic.php?f=50&t=9274)
 * [Plugin eedomus deCONZAct sur Github](https://github.com/2bprog/eedomus-deconzact-plugin)
 * [Plugin eedomus deCONZCat sur Github](https://github.com/2bprog/eedomus-deconzact-plugin)
 * [Site officiel d'Eedomus](https://www.eedomus.com/)
