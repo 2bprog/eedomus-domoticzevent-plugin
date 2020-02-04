@@ -21,7 +21,7 @@ Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée aut
 
 Voici  un exemple pour envoyer la valeur d'un capteur de température.
 
-![Exemple pour un capteur de température](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/exemple-temp.jpg)
+![Exemple pour un capteur de température](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/exemple-temp.0.0.3.jpg)
 
 ## Prérequis
 
