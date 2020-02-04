@@ -59,7 +59,7 @@ Dans les cas ou l’accès au serveur Domoticz est sécurisé, il vous faut renseigne
 ![Erreur de lecture](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfgerr.jpg)
 
 * En cas de succès, la fenêtre suivante doit s'afficher :
-![Erreur de lecture](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfgok.jpg)
+![Erreur de lecture](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/domzevents-cfgok.0.0.3.jpg)
 
 ### Création du Widget 
 
@@ -87,7 +87,7 @@ Dans les cas ou l’accès au serveur Domoticz est sécurisé, il vous faut renseigne
 
 * Une fois la configuration terminée, cliquez sur le bouton **Ajouter**, le message **Succès** doit apparaître, vous pouvez ensuite **Fermer** la fenêtre.
 
-![Ajouter](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/success.0.0.3.jpg)
+![Ajouter](https://raw.githubusercontent.com/2bprog/eedomus-domoticzevent-plugin/master/doc/success.jpg)
 
 * Pour modifier un élément, sélectionnez la ligne dans le tableau, puis cliquez sur le bouton **Modifier**, le fonctionnement est similaire à l'ajout.
 
@@ -117,7 +117,7 @@ Dans les cas ou l’accès au serveur Domoticz est sécurisé, il vous faut renseigne
 
 ## Liens 
 
-* [Domoticz - Events sur le forum eedomus] (https://forum.eedomus.com/viewtopic.php?f=50&t=9274)
+* [Domoticz - Events sur le forum eedomus](https://forum.eedomus.com/viewtopic.php?f=50&t=9274)
 * [Plugin eedomus deCONZAct sur Github](https://github.com/2bprog/eedomus-deconzact-plugin)
 * [Plugin eedomus deCONZCat sur Github](https://github.com/2bprog/eedomus-deconzact-plugin)
 * [Site officiel d'Eedomus](https://www.eedomus.com/)
