@@ -118,7 +118,7 @@ return {
     local _u = dz.utils
    
     functions = {
-      ['temp'] = function() return _u.round(item.temperature, 2) end,
+      ['temp'] = function() return math.floor(item.temperature * 10) / 10 end,
       ['hum'] = function() return math.floor(item.humidity)  end,
       ['baro'] = function() return math.floor(item.barometer)  end,
       ['pres'] = function() return math.floor(item.pressure)  end,
@@ -382,23 +382,13 @@ $(document).ready(function() {
   var columnDefs = [
    {
     data: "domzid",
-    title: "ID domoticz",
+    title: "Source Domoticz",
     type : "select",
     options : seldomzids,
     select2 : { width: "100%"},
     render: function (data, type, row, meta) {
         if (data == null || !(data in seldomzids)) return null;
         return seldomzids[data];   }
-  },
- {
-    data: "eeid",
-    title: "ID eedomus",
-    type : "select",
-    options : seleeids,
-    select2 : { width: "100%"},
-    render: function (data, type, row, meta) {
-        if (data == null || !(data in seleeids)) return null;
-        return seleeids[data];   }
   },
   {
     data: "ech",
@@ -410,7 +400,19 @@ $(document).ready(function() {
         if (data == null || !(data in selechange)) return null;
         return selechange[data];   }  
     
-  }];
+  },
+  {
+    data: "eeid",
+    title: "Destination Eedomus",
+    type : "select",
+    options : seleeids,
+    select2 : { width: "100%"},
+    render: function (data, type, row, meta) {
+        if (data == null || !(data in seleeids)) return null;
+        return seleeids[data];   }
+  }
+  
+  ];
 
   var myTable;
 
