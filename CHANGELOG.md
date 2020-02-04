@@ -1,4 +1,4 @@
-## ENCOURS
+## v0.0.3-beta (04/02/2020)
 
 * Changement de l'ordre des colonnes dans la fenêtre de configuration
 * Retourne les températures avec une décimale
