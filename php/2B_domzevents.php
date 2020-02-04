@@ -1,6 +1,11 @@
 <?
+/*
+ Fichier : 2B_domzevents.php 
+ version : 0.0.3
+*/
 
 /*
+eeip=[IP]
 domipp=[IP:PORT,[user:pwd]]
 action=[SET|POST|WIDGET]
 api=[code API pour le SET]
