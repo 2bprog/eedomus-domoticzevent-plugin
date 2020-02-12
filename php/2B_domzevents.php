@@ -121,6 +121,8 @@ return {
     -- ##LINKS##    
     
     local _u = dz.utils
+	
+	local dzthmd = {['0'] = 'off', ['10'] = 'boost', ['20'] = 'auto'}
    
     functions = {
       ['temp'] = function() return math.floor(item.temperature * 10) / 10 end,
@@ -135,6 +137,9 @@ return {
       -- BUG domoticz timedOut ['com'] = function()  if (item.timedOut)  then return 0  end return 1 end,
       ['0ou1'] = function()  if (item.active)  then return 1  end return 0 end,
       ['0ou100'] = function()  if (item.active)  then return 100  end return 0 end,
+	  ['thermo'] = function() return math.floor(item.setPoint * 10) / 10 end,
+	  ['dzthmd'] = function() if item.level == nil then return 'off' end 
+	               return dzthmd[tostring(item.level)]  end,
       ['dzcmd'] = function()  if item.level == nil then return 0 end return item.level  end,
       ['dzbri'] = function()  val=0  if item.active then val =  math.floor(item.level / 10 + 0.5) * 10  
                               if val == 0 then val = 1 end  end return val end,
@@ -302,6 +307,8 @@ if (!$savedone && $ok)
     // BUG domoticz timedOut $selechange = $selechange .'"com":"Etat de la communication (O=KO ou 1=OK)",';
     $selechange = $selechange .'"0ou1":"Off/On, Ferm./Ouv. Ras/Mouv. (0 ou 1)",';
     $selechange = $selechange .'"0ou100":"Off/On, Ferm./Ouv. Ras/Mouv. (0 ou 100)",';    
+	$selechange = $selechange .'"thermo":"Consigne de Thermostat",';    	
+	$selechange = $selechange .'"dzthmd":"deConzCap - Mode tete Thermostatique ",';
     $selechange = $selechange .'"dzcmd":"deConzCap - Etat télécommande ",';
     $selechange = $selechange .'"dzbri":"deConzAct - On/Off et Luminosité ",';
 	$selechange = $selechange .'"eecol":"deConzAct - Couleur au format Eedomus R,G,B (0 à 100) "';

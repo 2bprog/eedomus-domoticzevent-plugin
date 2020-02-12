@@ -1,3 +1,8 @@
+## v0.0.4-beta (12/02/2020)
+
+* Ajout échange Consigne de Thermostat
+* Ajout échange Mode de Tête thermostatique (Off, Auto, Boost)
+
 ## v0.0.3-beta (04/02/2020)
 
 * Changement de l'ordre des colonnes dans la fenêtre de configuration
