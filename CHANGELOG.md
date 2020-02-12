@@ -1,4 +1,4 @@
-## v0.0.4-beta (12/02/2020)
+## EN COURS (13/02/2020)
 
 * Ajout échange Consigne de Thermostat
 * Ajout échange Mode de Tête thermostatique (Off, Auto, Boost)
