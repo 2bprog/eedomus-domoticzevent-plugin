@@ -15,7 +15,9 @@ Celui ci ne DOIT pas être modifié manuellement. La mise à jour est effectuée aut
 * nvalue - Valeur brute : nValue (deCONZ)
 * active - Off/On, Fermé/Ouvert, Ras/Mouvemement (0/1) (deCONZ)
 * active - Off/On, Fermé/Ouvert, Ras/Mouvemement (0/100) (deCONZ)
-* level : [deConzCap](https://forum.eedomus.com/viewtopic.php?f=50&t=9238) - etat télécommade au format deCONZ domoticz (deCONZ)
+* setPoint - Consigne de Thermostat (deCONZ) 
+* level - [deConzCap](https://forum.eedomus.com/viewtopic.php?f=50&t=9238) - Mode Tête Thermostatique (deCONZ)
+* level - [deConzCap](https://forum.eedomus.com/viewtopic.php?f=50&t=9238) - etat télécommade au format deCONZ domoticz (deCONZ)
 * active et level - [deConzAct](https://forum.eedomus.com/viewtopic.php?f=50&t=9236) - On/Off et Luminosité de 0 à 100 (deCONZ)
 * getColor - [deConzAct](https://forum.eedomus.com/viewtopic.php?f=50&t=9236) - Couleur au format eedomus R,G,B (0 à 100) (deCONZ)
 
