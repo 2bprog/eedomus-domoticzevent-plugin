@@ -22,4 +22,3 @@
 
 * Version initiale
 
-<b>Ce Plugin permet de configurer l'envoi de valeur de Domoticz vers l'Eedomus en temps réèl</b><br><br>Température, Humidité, Pression atmosphérique, Pression, Luminosité, Niveau de batterie, Niveau de batterie - Indicateur Eedomus, Indicateur de signal, Valeur numérique brute, Off/On Ferm./Ouv Ras/Mouv. (0 ou 1), Off/On Ferm./Ouv Ras/Mouv. (0 ou 100), Consigne de Thermostat, deConzCap - Etat télécommande, deConzCap - Mode Tête Thermostatique, deConzAct - On/Off et Luminosité, deConzAct - Couleur au format Eedomus R,G,B (0 à 100)<br><br>Ce plugin peut etre utilisé en complement de <a href='https://forum.eedomus.com/viewtopic.php?f=50&t=9236' target='_blank'>deConzAct</a> et <a href='https://forum.eedomus.com/viewtopic.php?f=50&t=9238' target='_blank'>deConzCap</a>
