@@ -1,3 +1,7 @@
+## v0.0.5-beta (16/02/2020)
+
+* Correction lors de la création du script
+
 ## v0.0.4-beta (13/02/2020)
 
 * Ajout échange Consigne de Thermostat

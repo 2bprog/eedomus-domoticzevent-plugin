@@ -1,7 +1,7 @@
 <?
 /*
  Fichier : 2B_domzevents.php 
- version : 0.0.3
+ version : 0.0.5
 */
 
 /*
@@ -231,7 +231,9 @@ $nbfound = 0;
 $ok = sdk_getIDs($domheader, $domipp, $domzscripts, $nbfound, $doXML);
 if ($ok && $nbfound != count($domzscripts))
 {
-    $ok = sdk_createOrupdateScripts($domheader, $domipp, $domzscripts, $defscript, '', '', $doXML);
+	$luahdr = '';
+    $luacfg = '';
+    $ok = sdk_createOrupdateScripts($domheader, $domipp, $domzscripts, $defscript, $luahdr, $luacfg, $doXML);
     if ($ok) $ok = sdk_getIDs($domheader, $domipp, $domzscripts, $nbfound, $doXML);
 }
 
