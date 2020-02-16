@@ -2,7 +2,7 @@
 	"plugin_id": "bbdomzevents",
 	"name_fr": "Domoticz - Events",
 	"icon": "domzevents.png",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"creation_date": "2020-01-16",
 	"modification_date": "2020-02-16",
 	"author": "Benjamin B.<br><a target='_blank' href='https://github.com/2bprog/eedomus-domoticzevent-plugin'>Sources sur github <img src='/img/external.png'></a>",

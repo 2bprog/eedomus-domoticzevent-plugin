@@ -538,7 +538,7 @@ $("#send").on("click", function(e) {
 </form>
 <? } else { ?>
    <div class="alert alert-danger" role="alert">
-   <center>Une erreur est survenue lors du chargement des données !<br> (Vérifier les informations de connexion au serveur Domoticz)</center>
+   <center>Une erreur est survenue lors du chargement des données !<br> (Vérifiez les informations de connexion au serveur Domoticz)</center>
     </div>
 <? } ?>
 
@@ -707,8 +707,10 @@ function sdk_eedomusHttp($url, $method, $params,  &$result, $doXML)
     $fn = 'sdk_eedomusHttp';
     if ($doXML) echo "<$fn>\r\n";
     if ($doXML) sdk_echoxml('url',  "$method : $url" , $doXML);
-    $result = httpQuery($url, $method , $params); 
     if ($doXML) sdk_echoxml('params',$params, $doXML);
+    $result = httpQuery($url, $method , $params); 
+    $result = str_replace ( '\"' , ' ' , $result);
+    
     $result = sdk_json_decode($result, false);
     if ($doXML) echo "</$fn>\r\n";
     return $result['success'] == 1;
@@ -719,8 +721,9 @@ function sdk_domzHttp($url, $method, $params, $domheader ,&$result, $doXML)
     $fn = 'sdk_domzHttp';
     if ($doXML) echo "<$fn>\r\n";
     if ($doXML) sdk_echoxml('url',  "$method : $url" , $doXML);
-    $result = httpQuery($url, $method , $params, null, $domheader);  
     if ($doXML) sdk_echoxml('params',$params, $doXML);
+    $result = httpQuery($url, $method , $params, null, $domheader);  
+    
     $result = sdk_json_decode($result, false);
     if ($doXML) echo "</$fn>\r\n";
     return $result['status'] == 'OK';

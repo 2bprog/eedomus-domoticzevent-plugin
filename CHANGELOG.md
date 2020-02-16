@@ -1,3 +1,7 @@
+## v0.0.6-beta (16/02/2020)
+
+* Correction dans la lecture des périphériques eedomus
+
 ## v0.0.5-beta (16/02/2020)
 
 * Correction lors de la création du script
