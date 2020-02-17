@@ -1,7 +1,7 @@
 <?
 /*
  Fichier : 2B_domzevents.php 
- version : 0.0.7
+ version : 0.0.8
 */
 
 /*
@@ -264,35 +264,15 @@ if ($action == 'POST')
 if (!$savedone && $ok)
 {
     // chargement id eedomus
-    $eedomus = '';
-    $ok=sdk_eedomusHttp("http://localhost/api/get?action=periph.list", 'GET', '', $eedomus, $doXML);
-    $eeids = &$eedomus['body'];
-    $seleeids = '';
-    foreach ($eeids as $key => $value)
-    {
-        if ($seleeids != '')
-            $seleeids .= ', ';
-            
-        $seleeids = $seleeids.'"'.$value['periph_id'].'":"'.$value['periph_id'].' - '.$value['name'].' - '.$value['usage_name'].'"';   
-    }
-    $seleeids = '{'.$seleeids.'}';
+    $url = 'http://localhost/script/?exec=2B_domzevide.php';
+    $seleeids = httpQuery($url, 'GET' , ''); 
     if ($doXML) sdk_echoxml('seleeids', $seleeids, $doXML);  
     
     // chargement id domoticz
-    $ok=sdk_domzHttp("http://$domipp/json.htm?type=devices&filter=all&used=true&order=Name", 'GET', '', $domheader, $domz, $doXML);
-    $domzids = &$domz['result'];
-    $seldomzids = '';
-    foreach ($domzids as $key => $value)
-    {
-        $swType = '';
-        if (isset($value['SwitchType']))
-            $swType = ' ('.$value['SwitchType'].')';
-            
-       if ($seldomzids != '')
-            $seldomzids .= ', ';
-        $seldomzids = $seldomzids.'"'.$value['idx'].'":"'.$value['idx'].' - '.$value['Name'].' - '.$value['Type'].$swType.'"';   
-    }
-    $seldomzids = '{'.$seldomzids.'}';
+    $data = array('domipp' => $domipp,    'domheader' => $domheader[0] );
+    $doparams =  http_build_query($data);
+    $url = "http://localhost/script/?exec=2B_domzevidd.php&$doparams";
+    $seldomzids = httpQuery($url, 'GET' , ''); 
     if ($doXML) sdk_echoxml('seldomzids', $seldomzids, $doXML);  
     
     // type d'echange géré
@@ -709,6 +689,8 @@ function sdk_eedomusHttp($url, $method, $params,  &$result, $doXML)
     if ($doXML) sdk_echoxml('url',  "$method : $url" , $doXML);
     if ($doXML) sdk_echoxml('params',$params, $doXML);
     $result = httpQuery($url, $method , $params); 
+	
+	// BUG sdk_json_decode si une seul \" 
     $result = str_replace ( '\"' , ' ' , $result);
     
     $result = sdk_json_decode($result, false);
@@ -723,7 +705,6 @@ function sdk_domzHttp($url, $method, $params, $domheader ,&$result, $doXML)
     if ($doXML) sdk_echoxml('url',  "$method : $url" , $doXML);
     if ($doXML) sdk_echoxml('params',$params, $doXML);
     $result = httpQuery($url, $method , $params, null, $domheader);  
-    
     $result = sdk_json_decode($result, false);
     if ($doXML) echo "</$fn>\r\n";
     return $result['status'] == 'OK';

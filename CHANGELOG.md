@@ -1,3 +1,7 @@
+## v0.0.8-beta (17/02/2020)
+
+* Décomposition des scripts php pour eviter des problemes de fonctionnement
+
 ## v0.0.7-beta (16/02/2020)
 
 * Correction dans la gestion des caractères accentués
