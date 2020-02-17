@@ -1,4 +1,9 @@
 <?
+/*
+ Fichier : 2B_domzevide.php 
+ version : 0.0.9
+*/
+
 
     // script pour obtenir la liste des id eedmus
     $url = 'http://localhost/api/get?action=periph.list';

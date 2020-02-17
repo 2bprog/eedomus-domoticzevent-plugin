@@ -1,5 +1,10 @@
 <?
 
+/*
+ Fichier : 2B_domzevidd.php 
+ version : 0.0.9
+*/
+
 // script pour obtenir la liste des id domoticz
 // domipp : ip+poster serveur domoticz
 // domheader : header pour l'identification
@@ -7,7 +12,7 @@
     $domipp = getarg("domipp");
     $domheader = array( getarg("domheader",false, '') );
     
-    $url = "http://$domipp/json.htm?type=devices&filter=all&order=Name";
+    $url = "http://$domipp/json.htm?type=devices&filter=all&used=true&order=Name";
     $result = httpQuery($url, 'GET' , '', null, $domheader);  
     //echo $result;
     $result = str_replace ( '\"' , ' ' , $result);

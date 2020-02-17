@@ -1,3 +1,7 @@
+## v0.0.9-beta (17/02/2020)
+
+* Correction du filtre pour les récupérations des éléments DomoticZ
+
 ## v0.0.8-beta (17/02/2020)
 
 * Décomposition des scripts php pour eviter des problemes de fonctionnement
