@@ -5,7 +5,7 @@
 	"version": "0.0.9",
 	"creation_date": "2020-01-16",
 	"modification_date": "2020-02-17",
-	"author": "Benjamin B.<br><a target='_blank' href='https://github.com/2bprog/eedomus-domoticzevent-plugin'>Sources sur github <img src='/img/external.png'></a>",
+	"author": "Benj70b<br><a target='_blank' href='https://github.com/2bprog/eedomus-domoticzevent-plugin'>Sources sur github <img src='/img/external.png'></a>",
 	"description_fr": "<b>Ce Plugin permet de configurer l'envoi de valeur de Domoticz vers l'Eedomus en temps réèl</b><br><br>Température, Humidité, Pression atmosphérique, Pression, Luminosité, Niveau de batterie, <br>Niveau de batterie - Indicateur Eedomus, Indicateur de signal, Valeur numérique brute, <br>Off/On Ferm./Ouv Ras/Mouv. (0 ou 1), Off/On Ferm./Ouv Ras/Mouv. (0 ou 100), <br>Consigne de Thermostat, deConzCap - Etat télécommande, deConzCap - Mode Tête Thermostatique, <br>deConzAct - On/Off et Luminosité, deConzAct - Couleur au format Eedomus R,G,B (0 à 100)<br><br>Ce plugin peut etre utilisé en complement de <a href='https://forum.eedomus.com/viewtopic.php?f=50&t=9236' target='_blank'>deConzAct</a> et <a href='https://forum.eedomus.com/viewtopic.php?f=50&t=9238' target='_blank'>deConzCap</a>",
 	"description_en": "",
 	"description_es": "",
