@@ -1,4 +1,4 @@
-## v0.0.9-beta (28/02/2020)
+## v0.1.0-beta (28/02/2020)
 
 * Correction du lien eedomus dans le script DzVents 
 
