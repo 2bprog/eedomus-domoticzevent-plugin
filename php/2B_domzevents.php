@@ -1,7 +1,7 @@
 <?
 /*
  Fichier : 2B_domzevents.php 
- version : 0.0.9
+ version : 0.1.0
 */
 
 /*
@@ -486,7 +486,7 @@ $("#send").on("click", function(e) {
 <? } ?>
 <? if ($ok) {
 
-            $url =  "http://$eedip/script/?exec=2B_domzevents.php&domipp=$dompram&action=POST&p2=xml";
+            $url =  "http://$eedip/script/?exec=2B_domzevents.php&eedip=$eedip&domipp=$dompram&action=POST&p2=xml";
             echo 'url: "'.$url.'",';
 ?>
             data: JSON.stringify(myTable.data().toArray()),

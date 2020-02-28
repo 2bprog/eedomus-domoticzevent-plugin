@@ -1,3 +1,7 @@
+## v0.0.9-beta (28/02/2020)
+
+* Correction du lien eedomus dans le script DzVents 
+
 ## v0.0.9-beta (17/02/2020)
 
 * Correction du filtre pour les récupérations des éléments DomoticZ

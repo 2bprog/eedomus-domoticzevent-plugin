@@ -2,7 +2,7 @@
 
 /*
  Fichier : 2B_domzevidd.php 
- version : 0.0.9
+ version : 0.1.0
 */
 
 // script pour obtenir la liste des id domoticz
