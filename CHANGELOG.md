@@ -1,3 +1,7 @@
+## v0.1.1-beta (01/09/2020)
+
+*  Modification dans la gestion de l'indicateur de batterie Eedomus, si 0 la valeur est maintenant a 255 (faible)
+
 ## v0.1.0-beta (28/02/2020)
 
 * Correction du lien eedomus dans le script DzVents 

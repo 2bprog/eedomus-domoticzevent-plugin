@@ -1,7 +1,7 @@
 <?
 /*
  Fichier : 2B_domzevents.php 
- version : 0.1.0
+ version : 0.1.1
 */
 
 /*
@@ -11,6 +11,7 @@ action=[SET|POST|WIDGET]
 api=[code API pour le SET]
 val=[valeur pour le SET]
 bat=[0 ou 1] pour le SET 1 = utilisation de la Fonction setBattery 
+fv=[0 ou 1] pour forcer la mise a jour
 p2=[xml|[html]
 */
 
@@ -131,7 +132,8 @@ return {
       ['pres'] = function() return math.floor(item.pressure)  end,
       ['lux'] = function() return math.floor(item.lux)  end,
       ['bat'] = function() return math.floor(item.batteryLevel)  end,
-	  ['ibat'] = function() return math.floor(item.batteryLevel)  end,
+	  ['ibat'] = function() if math.floor(item.batteryLevel) == 0 then return 255 end 
+	                        return math.floor(item.batteryLevel)  end,	  
       ['siglvl'] = function() return math.floor(item.signalLevel)  end,
       ['nvalue'] = function() return item.nvalue  end,
       -- BUG domoticz timedOut ['com'] = function()  if (item.timedOut)  then return 0  end return 1 end,
