@@ -1,3 +1,7 @@
+## v0.1.2-beta (02/09/2020)
+
+*  Ajout de la gestion de l'indicateur de batterie dans le script php pour la compatibilité
+
 ## v0.1.1-beta (01/09/2020)
 
 *  Modification dans la gestion de l'indicateur de batterie Eedomus, si 0 la valeur est maintenant a 255 (faible)

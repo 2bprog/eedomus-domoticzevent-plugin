@@ -1,7 +1,7 @@
 <?
 /*
  Fichier : 2B_domzevents.php 
- version : 0.1.1
+ version : 0.1.2
 */
 
 /*
@@ -67,6 +67,7 @@ if ($action == 'SET')
         
     	if ($bat == 1)
     	{
+			if ($val == 0) $val=255;
     	    if ($battery != $val || $lvduration >= 3600)
     		    setBattery($api, $val);
     	}
