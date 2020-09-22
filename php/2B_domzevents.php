@@ -124,7 +124,7 @@ return {
     
     local _u = dz.utils
 	
-	local dzthmd = {['0'] = 'off', ['10'] = 'boost', ['20'] = 'auto'}
+	local dzthmd = {['0'] = 'off', ['10'] = 'heat', ['20'] = 'auto'}
    
     functions = {
       ['temp'] = function() return math.floor(item.temperature * 10) / 10 end,
@@ -293,7 +293,7 @@ if (!$savedone && $ok)
     $selechange = $selechange .'"0ou1":"Off/On, Ferm./Ouv. Ras/Mouv. (0 ou 1)",';
     $selechange = $selechange .'"0ou100":"Off/On, Ferm./Ouv. Ras/Mouv. (0 ou 100)",';    
 	$selechange = $selechange .'"thermo":"Consigne de Thermostat",';    	
-	$selechange = $selechange .'"dzthmd":"deConzCap - Mode tete Thermostatique ",';
+	$selechange = $selechange .'"dzthmd":"deConzCap - Tete Thermostatique (Spirit)",';
     $selechange = $selechange .'"dzcmd":"deConzCap - Etat télécommande ",';
     $selechange = $selechange .'"dzbri":"deConzAct - On/Off et Luminosité ",';
 	$selechange = $selechange .'"eecol":"deConzAct - Couleur au format Eedomus R,G,B (0 à 100) "';
