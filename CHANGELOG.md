@@ -1,3 +1,7 @@
+## v0.1.X-beta (XX/XX/2020)
+
+*  Correction dans la confiration du mode thermostatique (Spirit)
+
 ## v0.1.2-beta (02/09/2020)
 
 *  Ajout de la gestion de l'indicateur de batterie dans le script php pour la compatibilité
